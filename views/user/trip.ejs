@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+</head>
+<body>
+    <h1><%=header%></h1>
+    <a href="/logout">Logout</a>
+    <br>
+    <br>
+    <a href="/user/trip">See Travel list</a>
+    <br>
+    <br>
+    <a href="/user">profile</a>
+    <br>
+    <br>
+    <p>Waiting Parties</p>
+    <table border="1">
+        <tr>
+            <th>To</th>
+            <th>Price per traveler</th>
+            <th>Guide</th>
+            <th>Traveler joined</th>
+            <th>Max traveler</th>
+            <th>Date depature</th>
+            <th>Due date Payment</th>
+            <th>Option</th>
+        </tr>
+        <% for (let i = 0; i < dataTripUser.length; i++) { %>
+        <tr>
+            <td> <%= dataTripUser[i].Trip.name%> </td>
+            <td> <%= dataTripUser[i].Trip.price%> </td>
+            <td> 0 </td>
+            <td> 0   </td>
+            <td> <%= dataTripUser[i].Trip.qty %> </td>
+            <td> <%= datePlus[i] %> </td>
+            <td> <%= dateMnus[i] %> </td>
+            <td><a href="user/createVacation"> Join party </a></td>
+        </tr>
+        <% } %>
+    </table>
+    <p>Trip Availabe</p>
+    <table border="1">
+        <tr>
+            <th>To</th>
+            <th>Price per traveler</th>
+            <th>Max traveler</th>
+            <th>Option</th>
+        </tr>
+        <% for (let i = 0; i < dataTrip.length; i++) { %>
+            <tr>
+                <td><%= dataTrip[i].name %></td>
+                <td><%= dataTrip[i].price %></td>
+                <td><%= dataTrip[i].qty %></td>
+                <td><a href="/user/<%= dataTrip[i].id%>/create"> Create party </a></td>
+            </tr>
+        <% } %>
+    </table>    
+</body>
+</html>

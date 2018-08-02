@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     qty: DataTypes.INTEGER
   }, {});
   Trip.associate = function(models) {
-    // associations can be defined here
+    const user = models.User
+    Trip.belongsToMany(user, {through:'UserTrip',foreignKey:'tripId'})
   };
   return Trip;
 };

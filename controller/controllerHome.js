@@ -1,5 +1,6 @@
 const crypto = require('crypto')
 const models = require('../models')
+
 const users = models.User
 const guides = models.Guide
 
@@ -11,7 +12,7 @@ class ControllerHome {
         res.render('../views/home/login')
     }
     static loginPost(req, res) {
-        const encripted = crypto.createHash('md5').update(req.body.password).digest('hex')
+        const encripted = crypto.createHash('md5').update(req.body.password + req.body.email).digest('hex')
         if (req.body.selectPicker == 'User') {
             users.findAll({
                     where: {
@@ -20,7 +21,13 @@ class ControllerHome {
                 })
                 .then(data => {
                     if (data.length !== 0 && data[0].dataValues.password === encripted) {
-                        res.send(data) //redirect ke user page
+                        let sessionPacker = {
+                            id: data[0].dataValues.id,
+                            email: data[0].dataValues.email,
+                            role: 'User'
+                        }
+                        req.session.user = sessionPacker
+                        res.redirect('/user') //redirect ke user page
                     } else {
                         res.send('wrong passwordor email')
                     }
@@ -31,8 +38,14 @@ class ControllerHome {
                         email: req.body.email
                     }
                 })
-                .then(data => { 
+                .then(data => {
                     if (data.length !== 0 && data[0].dataValues.password === encripted) {
+                        let sessionPacker = {
+                            id: data[0].dataValues.id,
+                            email: data[0].dataValues.email,
+                            role: 'Guide'
+                        }
+                        req.session.user = sessionPacker
                         res.send(data) //redirect ke guide page
                     } else {
                         res.send('wrong passwordor email guide')
@@ -45,7 +58,7 @@ class ControllerHome {
     }
     static registerPost(req, res) {
         if (req.body.selectPicker == 'User') {
-            const encripted = crypto.createHash('md5').update(req.body.password).digest('hex')
+            const encripted = crypto.createHash('md5').update(req.body.password + req.body.email).digest('hex')
             const newUser = {
                 name: req.body.name,
                 email: req.body.email,

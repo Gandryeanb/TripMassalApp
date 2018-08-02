@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+</head>
+<body>
+    <h1><%=header%></h1>
+    <a href="/logout">Logout</a>
+    <br>
+    <br>
+    <a href="/user/trip">See Travel list</a>
+    <br>
+    <br>
+    <a href="/user">profile</a>
+    <br>
+    <br>
+    <p>Trip You Choose</p>
+    <%= data%>
+    <table border="1">
+        <tr>
+            <th>To</th>
+            <th>Price per traveler</th>
+            <th>Max traveler</th>
+        </tr>
+        <tr>
+            <td><%= data[0].name %></td>
+            <td><%= data[0].price %></td>
+            <td><%= data[0].qty %></td>
+        </tr>
+    </table>
+    <br>  
+    <form action="/user/creating" method="POST">
+        <input type="text" name="id" style="display: none" value="<%=data[0].id%>">
+        <p> Set Date for your trip</p>
+        <input type="date" name="date">
+        <br>
+        <br>
+        <p> Your balance will auto reduce for make this order </p>
+        <input type="submit" value="submit">
+    </form>  
+</body>
+</html>

@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => {
     dueDatePayment: DataTypes.DATE
   }, {});
   UserTrip.associate = function(models) {
-    // associations can be defined here
+    const user = models.User
+    const trip = models.Trip
+    const invoice = models.Invoice
+    UserTrip.belongsTo(user,{foreignKey:'userId'})
+    UserTrip.belongsTo(trip,{foreignKey:'tripId'})
+    UserTrip.belongsTo(invoice,{foreignKey:'invoiceId'})
   };
   return UserTrip;
 };

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+</head>
+<body>
+    <h1><%=header%></h1>
+    <a href="/logout">Logout</a>
+    <br>
+    <br>
+    <a href="/user/trip">See Travel list</a>
+    <br>
+    <br>
+    <a href="/user">profile</a>
+    <br>
+    <br>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Balance</th>
+            <th>Option</th>
+        </tr>
+        <tr>
+            <td><%= data.name %></td>
+            <td><%= data.email%></td>
+            <td> <%= data.balance%> | <a href="user/topup"> Top Up </a> </td>
+            <td><a href="user/edit"> Update </a></td>
+        </tr>
+    </table>
+</body>
+</html>

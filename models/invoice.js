@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.INTEGER
   }, {});
   Invoice.associate = function(models) {
-    // associations can be defined here
+    const userTrip = models.UserTrip
+    Invoice.belongsTo(userTrip,{foreignKey:'planTripId'})
   };
   return Invoice;
 };

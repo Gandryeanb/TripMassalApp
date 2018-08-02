@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     balance: DataTypes.INTEGER
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    const trip = models.Trip
+    User.belongsToMany(trip, {through:'UserTrip',foreignKey:'userId'})
   };
   return User;
 };

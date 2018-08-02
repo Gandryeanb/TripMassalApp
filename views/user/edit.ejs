@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><%=title%></title>
+</head>
+<body>
+    <h1><%=header%></h1>
+    <a href="/logout">Logout</a>
+    <br>
+    <br>
+    <a href="/user/trip">See Travel list</a>
+    <br>
+    <br>
+    <a href="/user">profile</a>
+    <br>
+    <br>
+    <form action="/user/edit" method="POST">
+        <p>Name :</p>
+        <input type="text" name="name"><br>
+        <p>Email :</p>
+        <input type="text" name="email"><br>
+        <p>Password :</p>
+        <input type="text" name="password"><br>
+        <br>
+        <input type="submit" value="edit">
+    </form>
+</body>
+</html>
