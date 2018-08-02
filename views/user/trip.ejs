@@ -17,6 +17,7 @@
     <a href="/user">profile</a>
     <br>
     <br>
+    <%= dataTripUser.Invoice%>
     <p>Waiting Parties</p>
     <table border="1">
         <tr>
@@ -38,7 +39,11 @@
             <td> <%= dataTripUser[i].Trip.qty %> </td>
             <td> <%= datePlus[i] %> </td>
             <td> <%= dateMnus[i] %> </td>
-            <td><a href="user/createVacation"> Join party </a></td>
+            <td> <% if (dataTripUser[i].userId == idUser && dataTripUser[i].statusInvoice == true) {%>
+                    Already Pay
+                 <% } else { %>
+                    <a href="/user/<%= dataTripUser[i].Invoice.planTripId%>/join">Join Party</a>
+                <% } %></td>
         </tr>
         <% } %>
     </table>

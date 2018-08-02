@@ -25,11 +25,38 @@
             <th>Option</th>
         </tr>
         <tr>
-            <td><%= data.name %></td>
-            <td><%= data.email%></td>
-            <td> <%= data.balance%> | <a href="user/topup"> Top Up </a> </td>
+            <td><%= dataUser.name %></td>
+            <td><%= dataUser.email%></td>
+            <td> <%= dataUser.balance%> | <a href="user/topup"> Top Up </a> </td>
             <td><a href="user/edit"> Update </a></td>
         </tr>
+    </table>
+    <p>Your Pending Vacation</p>
+    <table border="1">
+        <tr>
+            <th>To</th>
+            <th>Price per traveler</th>
+            <th>Guide</th>
+            <th>Traveler joined</th>
+            <th>Max traveler</th>
+            <th>Date depature</th>
+            <th>Payment</th>
+        </tr>
+        <% for (let i = 0; i < dataTripUser.length; i++) { %>
+            <tr>
+                <td> <%= dataTripUser[i].Trip.name%> </td>
+                <td> <%= dataTripUser[i].Trip.price%> </td>
+                <td> 0 </td>
+                <td> 0   </td>
+                <td> <%= dataTripUser[i].Trip.qty %> </td>
+                <td> <%= datePlus[i] %> </td>
+                <td> <% if (dataTripUser[i].statusInvoice == true) {%>
+                        Already Pay
+                     <% } else { %> 
+                        <a href="#">Pay</a>
+                     <% } %></td>
+            </tr>
+        <% } %>
     </table>
 </body>
 </html>

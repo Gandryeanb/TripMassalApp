@@ -26,9 +26,7 @@ app.get('/logout', (req,res) => {
 })
 app.get('/test', (req,res)=> {
     models.UserTrip.findAll({
-        include:[
-            models.Invoice,models.Trip,models.User
-        ]
+        include:[models.Invoice]
     })
     .then(data => {
         res.send(data)

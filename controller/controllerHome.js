@@ -24,6 +24,7 @@ class ControllerHome {
                         let sessionPacker = {
                             id: data[0].dataValues.id,
                             email: data[0].dataValues.email,
+                            balance: data[0].dataValues.balance,
                             role: 'User'
                         }
                         req.session.user = sessionPacker
@@ -43,6 +44,7 @@ class ControllerHome {
                         let sessionPacker = {
                             id: data[0].dataValues.id,
                             email: data[0].dataValues.email,
+                            balance: data[0].dataValues.balance,
                             role: 'Guide'
                         }
                         req.session.user = sessionPacker
